@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "595385369438",
+    "firebase_url": "https://dmi-cms.firebaseio.com",
+    "project_id": "dmi-cms",
+    "storage_bucket": "dmi-cms.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595385369438:android:f43d2bcb1b365cce",
+        "android_client_info": {
+          "package_name": "com.dminc.cms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595385369438-3vu1hb955578mniev9j7ihp5kojoerkd.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "595385369438-6phge2bkmtmitjsp79nk1gk0pp525o9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIrhGXxrDjXmPBQ6ae4MlKjiS1jIE65AE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

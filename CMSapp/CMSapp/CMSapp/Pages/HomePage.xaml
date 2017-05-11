@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMSapp.Pages.HomePage"
+             BackgroundColor="White">
+   
+    <ContentPage.Content >
+        <StackLayout Padding="20">
+            <Button x:Name="VehicleRequestButton" Text="Request a Vehicle" Clicked="GoToApplicationPage"  
+                    
+                    HorizontalOptions="FillAndExpand"/>
+            <StackLayout x:Name="ApplicationReviewWrapper" >
+                <Button x:Name="ApplicationReviewButton"
+                    Clicked="GoToApplicationReviewPage"
+                   
+                    HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+           
+           
+
+
+            <!--EMPTY VIEW LABEL-->
+            <StackLayout x:Name="EmptyDisplayMessageStack" Margin="0,50" IsVisible="False">
+                <Label Text="You have no application to display"  FontSize="Small" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <!--APPLICATION VIEW-->
+            <StackLayout x:Name="ApplicationViewStackLayout" >
+                
+                <ListView x:Name="DisplayAppListView"
+                      HasUnevenRows="True"
+                      RowHeight="-1"
+                      Margin="0,40,0,0"
+                      ItemTapped="DisplayAppListView_ItemTapped"
+                      >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
+                                        <Label Text="Application No:" FontSize="16" />
+                                        <Label Text="{Binding applicationid}" FontSize="16" />
+                                        <Label Text="{Binding submission_datetime}" FontSize="16"  HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <Label Text="Application Status:"  FontSize="16" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                    <Label Text="{Binding application_status}"  TextColor="Red" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
+                                        <Label Text="Cab required at:"  FontSize="16"  HorizontalOptions="Center"/>
+                                        <Label Text="{Binding cab_required_time}"  FontSize="16" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView x:Name="DisplayPassengerListView" 
+                    HasUnevenRows="True"
+                      ItemTapped="DisplayPassengerListView_ItemTapped"
+                      SeparatorColor="Black"
+                       >
+                    <ListView.Header>
+                        <StackLayout  Padding="5" BackgroundColor="#cccccc">
+                            <Label Text="List of Passengers" FontSize="16" FontAttributes="Bold"/>
+                        </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid  Padding="15,0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding employeeid}" FontSize="16"  FontAttributes="Bold" Grid.Row="0" Grid.Column="0"  />
+                                    <Label Text="{Binding destination}"  FontSize="16"  LineBreakMode="TailTruncation" Grid.Row="0" Grid.Column="1"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button x:Name="SendToSecurityButton" Clicked="SendToSecurityButton_Clicked" Text="Send to Security (directly)" TextColor="Teal" BackgroundColor="#efefef" HorizontalOptions="FillAndExpand" Margin="0,10" />
+
+            </StackLayout>
+
+          
+              <!--CAB VIEW-->
+            <StackLayout x:Name="CabViewStackLayout">
+                
+                <ListView x:Name="DisplayCabListView"
+                      HasUnevenRows="True"
+                      RowHeight="-1"
+                      Margin="0,40,0,0"
+                      ItemTapped="DisplayCabListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
+                                        <Label Text="Application No:"  FontSize="16"  HorizontalOptions="Center" FontAttributes="Bold" />
+                                        <Label Text="{Binding applicationid}"  FontSize="16" />
+                                    </StackLayout>
+                                    <Label Text="Cab Status:"  FontSize="16" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                    <Label x:Name="CabStatusLabel" Text="{Binding cab_status}"  TextColor="Red" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+
+
+                                    <StackLayout Orientation="Horizontal"  Margin="0,15,0,0">
+                                        <Label Text="Cab No:"  FontSize="16"   FontAttributes="Bold" />
+                                        <Label Text="{Binding cab_no}"  FontSize="16" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"  Margin="0,10,0,0">
+                                        <Label Text="Expected arrival time:"  FontSize="16" FontAttributes="Bold"  />
+                                        <Label Text="{Binding expected_arrival_time}"  FontSize="16" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"  Margin="0,10,0,0">
+                                        <Label Text="Driver:"  FontSize="16" FontAttributes="Bold" />
+                                        <Label Text="{Binding driver_name}"  FontSize="16" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal"  Margin="0,10,0,0">
+                                        <Label Text="Contact No:"  FontSize="16"  FontAttributes="Bold"/>
+                                        <Label Text="{Binding driver_contact_no}"  FontSize="16" />
+                                    </StackLayout>
+                                    
+                                    
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout x:Name="CancelCabWrapper">
+                    <Button x:Name="CancelCabButton" Text="Cancel Cab" BackgroundColor="#efefef" TextColor="Red" Clicked="CancelCabButton_Clicked" />
+                </StackLayout>
+                
+                <StackLayout x:Name="StartTripWrapper">
+                    <Button x:Name="StartTripButton" Clicked="StartTripButton_Clicked"  Text="Start Trip" TextColor="Teal" BackgroundColor="#efefef"   />
+                </StackLayout>
+               
+                <Button x:Name="EndTripButton"  Text="End Trip" TextColor="Teal" BackgroundColor="#efefef" IsVisible="False"  />
+                
+            </StackLayout>
+           
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
+    

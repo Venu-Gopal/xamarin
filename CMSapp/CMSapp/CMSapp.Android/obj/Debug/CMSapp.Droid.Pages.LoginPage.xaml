@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMSapp.LoginPage"
+             BackgroundColor="White"  >
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="30">
+            <Image Source="DMIlogo.png" WidthRequest="200" Margin="0,15"/>
+            <Entry x:Name="UserIdEntry" 
+                   Placeholder="EmployeeID" 
+                   BackgroundColor="#dddddd"
+                   HorizontalTextAlignment="Center"/>
+            <Entry x:Name="PasswordEntry"
+                   IsPassword="True"
+                   Placeholder="Password" 
+                   BackgroundColor="#dddddd"  
+                   HorizontalTextAlignment="Center"/>
+            <Label x:Name="ValidateLabel"
+                   TextColor="Red" 
+                   Text=""
+                   IsVisible="true"
+                   HorizontalTextAlignment="Center"/>
+            <ActivityIndicator x:Name="LoginIndicator" IsVisible="False" IsRunning="False" /> 
+            <StackLayout Padding="60,0,60,0">
+                <Button x:Name="LoginButton" 
+                        Clicked="LoginButton_OnClick" 
+                        Text="LOG IN" BackgroundColor="#e50505"/>
+            </StackLayout>
+
+
+            <Label   Text="Don't have an account?" 
+                                  HorizontalTextAlignment="Center" 
+                                  FontAttributes="Italic" 
+                                 TextColor="Gray"/>
+
+
+            <StackLayout Padding="70,0,70,0" Margin="0,0,0,-20">
+                <Button x:Name="SignUpButton" 
+                        Clicked="SignUpButton_OnClick"
+                        Text="SIGN UP"/>
+            </StackLayout>
+
+        </StackLayout>
+
+
+    
+
+
+    </ContentPage.Content>
+</ContentPage>
+    

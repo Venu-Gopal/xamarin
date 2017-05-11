@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMSapp.Pages.FillCabDetailsPage"
+             Title="Booking Applications"
+             BackgroundColor="White">
+
+    <ContentPage.Content >
+      
+        <StackLayout Padding="20">
+            <Label Text="To be filled on booking the cab" HorizontalOptions="CenterAndExpand"  FontSize="Medium" Margin="0,30"/>
+            <Entry x:Name="CabNoEntry" Placeholder="Cab No." BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+            <Entry x:Name="DriverNameEntry" Placeholder="Driver Name"  BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+            <Entry x:Name="DriverContactEntry" Placeholder="Driver Contact No." BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="ExpectedArrivalTimeLabel" Text="Cab arrival time?" HorizontalOptions="FillAndExpand"/>
+                <TimePicker x:Name="ExpectedArrivalTimePicker" />
+            </StackLayout>
+            <StackLayout Padding="70,20">
+                <Button x:Name="BookCabButton" Clicked="BookCabButton_Clicked" Text="BOOK CAB" BackgroundColor="#e50505" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content >
+</ContentPage>

@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{09C8E9DF-723E-4A03-A24B-71BE4385C704}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CMSapp/CMSapp.iOS/AppDelegate.cs">
+    <Files>
+      <File FileName="CMSapp/CMSapp.iOS/AppDelegate.cs" Line="17" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CMSapp.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.CMSapp.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9FDB227C-7C1F-4529-86E6-BFE9FF53A319" />
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMSapp.Pages.ApplicationReviewPage"
+             
+             BackgroundColor="White">
+    <CarouselPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage>
+                <ContentPage.Padding>
+                    <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,10,0,0" />
+                </ContentPage.Padding>
+               
+                    <StackLayout Padding="20,0">
+                  
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="ApproveButton" Text="Approve" TextColor="Green" BackgroundColor="#efefef"  HorizontalOptions="FillAndExpand"
+                                Clicked="ApproveButton_Clicked"/>
+                        <Button x:Name="RejectButton" Text="Reject" TextColor="Red" BackgroundColor="#efefef"  HorizontalOptions="FillAndExpand"
+                                Clicked="RejectButton_Clicked" />
+                    </StackLayout>
+                        
+                        
+                    <StackLayout x:Name="CommentsStack" IsVisible="False">
+                        <Label Text="Enter your comments here" FontSize="Small"/>
+                        <Editor x:Name="CommentsEditor" HeightRequest="50" />
+                    </StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                    
+                            <Label Text="Application No:" FontSize="18" Grid.Column="0" Grid.Row="0" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding applicationid}" FontSize="16" Grid.Column="1" Grid.Row="0" />
+
+                            <Label Text="Submitted On :" FontSize="16" Grid.Column="0" Grid.Row="1"/>
+                            <Label Text="{Binding submission_datetime}" FontSize="16" Grid.Column="1" Grid.Row="1" />
+
+                            <Label Text="Application Status:" FontSize="16" Grid.Column="0" Grid.Row="2"/>
+                            <Label Text="{Binding application_status}" Grid.Column="1"  Grid.Row="2" FontSize="16" TextColor="Red"/>
+
+                            <Label Text="Project BPCode:" FontSize="16" Grid.Column="0" Grid.Row="3" />
+                            <Label Text="{Binding project_bpcode}" Grid.Column="1" Grid.Row="3" FontSize="16" />
+
+                            <Label Text="Purpose of travel:" FontSize="16" Grid.Column="0" Grid.Row="4" />
+                            <Label Text="{Binding travel_purpose}" Grid.Column="1" Grid.Row="4" FontSize="16" />
+
+                            <Label Text="Roundtrip:" FontSize="16" Grid.Column="0" Grid.Row="5" />
+                            <Label Text="{Binding roundtrip}" Grid.Column="1" Grid.Row="5" FontSize="16" />
+
+                            <Label Text="Cab Required at:" FontSize="16" Grid.Column="0" Grid.Row="6" />
+                            <Label Text="{Binding cab_required_time}" Grid.Column="1" Grid.Row="6" FontSize="16" />
+                    </Grid>                       
+
+                        <ListView x:Name="ReviewPassengerListView" ItemsSource="{Binding PassengerList}"
+                                HasUnevenRows="True"
+                                ItemTapped="ReviewPassengerListView_ItemTapped"
+                                  SeparatorColor="Black" >
+                        <ListView.Header>
+                            <StackLayout Padding="5" BackgroundColor="#cccccc">
+                                <Label Text="List of Passengers" FontSize="16" TextColor="Black" FontAttributes="Bold" />
+                            </StackLayout>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid  Padding="0,15" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                        </Grid.ColumnDefinitions>
+
+
+
+                                            <Label Text="Employee Name:" FontSize="Small"    FontAttributes="Bold"  
+                                                       Grid.Column="0" Grid.Row="0"/>
+                                            <Label Text="{Binding employeeid}" FontSize="Small"   HorizontalTextAlignment="Center" 
+                                                    Grid.Column="1" Grid.Row="0"/>
+                                   
+                                            <Label Text="In-Time:"  FontSize="Small"   FontAttributes="Bold" 
+                                                    Grid.Column="0" Grid.Row="1"/>
+                                            <Label Text="{Binding in_time}"  FontSize="Small"  HorizontalTextAlignment="Center" 
+                                                    Grid.Column="1" Grid.Row="1"/>
+                                    
+                                            <Label Text="Pickup Location:"  FontSize="Small"    FontAttributes="Bold"
+                                                    Grid.Column="0" Grid.Row="2"/>
+                                            <Label Text="{Binding pickup}"  FontSize="Small"  
+                                                    Grid.Column="1" Grid.Row="2"/>
+                                     
+                                            <Label Text="Destination:"  FontSize="Small" FontAttributes="Bold"
+                                                    Grid.Column="0" Grid.Row="3"/>
+                                            <Label Text="{Binding destination}"  FontSize="Small" 
+                                                    Grid.Column="1" Grid.Row="3"/>
+                                    </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                
+               
+            </ContentPage>
+        </DataTemplate>
+    </CarouselPage.ItemTemplate>
+</CarouselPage>
+

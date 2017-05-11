@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CMSapp.Pages.ApplicationPage"
+             BackgroundColor="White"
+             Padding="20,40,20,20"
+            BindingContext="CMSapp.Pages.ApplicationPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="10">
+                <Entry x:Name="TravelPurposeEntry" Placeholder="Purpose of Travel" BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="CabRequiredTimeLabel" Text="Cab required at?" TextColor="Gray" FontSize="20" HorizontalOptions="FillAndExpand"/>
+                    <TimePicker x:Name="CabRequiredTimePicker" />
+                </StackLayout>
+
+                <!--Roundtrip Switch-->
+                <StackLayout Orientation="Horizontal" >
+                    <Label Text="Roundtrip?" TextColor="Gray" FontSize="20" HorizontalOptions="FillAndExpand"/>
+                    <Switch x:Name="RoundtripSwitch" IsToggled="False"  HorizontalOptions="End"/>
+                </StackLayout>
+
+                <Entry x:Name="ProjectBPCodeEntry" Placeholder="Project BP Code" BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+                <Entry x:Name="ManagerNameEntry" Placeholder="Manager Name" BackgroundColor="#dddddd"  HorizontalTextAlignment="Center"/>
+                <Entry x:Name="ManagerIDEntry" Placeholder="ManagerID" BackgroundColor="#dddddd"  HorizontalTextAlignment="Center" />
+                <Label x:Name="ManagerIDValidationLabel" Text="ManagerID is required." TextColor="Red" FontSize="Small" IsVisible="False"/>
+
+                <!--Travelling Solo Switch-->
+                <StackLayout Orientation="Horizontal" >
+                    <Label Text="Travelling Solo?" TextColor="Gray" HorizontalOptions="FillAndExpand"  FontSize="20"/>
+                    <Switch x:Name="TravellingSoloSwitch" IsToggled="True" Toggled="TravellingSoloToggled"  HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+
+                <!--Applicant's Passenger-Details-->
+
+                <StackLayout Orientation="Vertical" x:Name="PassengerStack0"  IsVisible ="true" Padding="10" BackgroundColor="#ebebeb"> 
+                    <Label x:Name="PassengerEmpIDLabel0"  TextColor="Black" FontAttributes="Bold"  FontSize="20" HorizontalOptions="FillAndExpand"/>
+                   
+                    <Grid ColumnSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry x:Name="PassengerPickupEntry0"  Grid.Row="0" Grid.Column="0"
+                               Placeholder="Pickup Location" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                        <Entry x:Name ="PassengerDestinationEntry0" Grid.Row="0" Grid.Column="1"
+                               Placeholder="Destination" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd" />
+                    </Grid>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="In-Time"  FontSize="20" HorizontalOptions="FillAndExpand"/>
+                        <TimePicker x:Name="PassengerInTimePicker0" />
+                    </StackLayout>
+                    <Label x:Name="Passenger0ValidationLabel" Text="All details required." TextColor="Red" FontSize="Small" IsVisible="False"/>
+                </StackLayout>
+               
+
+                <!--Escort Stack-->
+                <StackLayout x:Name="EscortStack" Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Require an escort?" TextColor="Gray" HorizontalOptions="FillAndExpand"  FontSize="20"/>
+                        <Switch x:Name="EscortSwitch" IsToggled="False" Toggled="EscortToggled"  HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <Entry x:Name="EscortNameEntry" IsVisible="False" Placeholder="Escort Name" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                </StackLayout>
+                
+                <Label x:Name="CompanionDetailsLabel"  Text="Add companion passenger details below (Max 3)." TextColor="Red" FontSize="20"  HorizontalOptions="CenterAndExpand" IsVisible="False" />
+
+                <!--Passenger Stack-->
+                <StackLayout x:Name="PassengerStack" Orientation="Vertical">
+                    <!--1st passenger : stack of required individual data-->
+                    <StackLayout Orientation="Vertical" x:Name="PassengerStack1"  IsVisible ="false">
+                        <BoxView Color="Black" HeightRequest="1" HorizontalOptions="Fill" Margin="0,10"/>
+                        <Entry x:Name="PassengerEmpIDEntry1" Placeholder="EmployeeID" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                        <Grid ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="PassengerPickupEntry1"  Grid.Row="0" Grid.Column="0"
+                               Placeholder="Pickup Location" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                            <Entry x:Name ="PassengerDestinationEntry1" Grid.Row="0" Grid.Column="1"
+                               Placeholder="Destination" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd" />
+                        </Grid>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="In-Time" TextColor="Gray" FontSize="20" HorizontalOptions="FillAndExpand"/>
+                            <TimePicker x:Name="PassengerInTimePicker1" />
+                        </StackLayout>
+                       
+                    </StackLayout>
+
+                    <!--2nd passenger : stack of required individual data-->
+                    <StackLayout Orientation="Vertical" x:Name="PassengerStack2"  IsVisible ="false">
+                        <BoxView Color="Black" HeightRequest="1" HorizontalOptions="Fill" Margin="0,10"/>
+                        <Entry x:Name="PassengerEmpIDEntry2" Placeholder="EmployeeID" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                        <Grid ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="PassengerPickupEntry2"  Grid.Row="0" Grid.Column="0"
+                               Placeholder="Pickup Location" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                            <Entry x:Name ="PassengerDestinationEntry2" Grid.Row="0" Grid.Column="1"
+                               Placeholder="Destination" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd" />
+                        </Grid>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="In-Time" TextColor="Gray" FontSize="20" HorizontalOptions="FillAndExpand"/>
+                            <TimePicker x:Name="PassengerInTimePicker2" />
+                        </StackLayout>
+                       
+                    </StackLayout>
+
+                    <!--3rd passenger : stack of required individual data-->
+                    <StackLayout Orientation="Vertical" x:Name="PassengerStack3"  IsVisible ="false">
+                        <BoxView Color="Black" HeightRequest="1" HorizontalOptions="Fill" Margin="0,10"/>
+                        <Entry x:Name="PassengerEmpIDEntry3" Placeholder="EmployeeID" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                        <Grid ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Entry x:Name="PassengerPickupEntry3"  Grid.Row="0" Grid.Column="0"
+                               Placeholder="Pickup Location" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd"  />
+                            <Entry x:Name ="PassengerDestinationEntry3" Grid.Row="0" Grid.Column="1"
+                               Placeholder="Destination" HorizontalOptions="FillAndExpand" BackgroundColor="#dddddd" />
+                        </Grid>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text=" In-Time" TextColor="Gray" FontSize="20" HorizontalOptions="FillAndExpand"/>
+                            <TimePicker x:Name="PassengerInTimePicker3" />
+                        </StackLayout>
+                       
+                    </StackLayout>
+
+
+                </StackLayout>
+
+                <Button x:Name="SubmitButton" Clicked="SubmitButton_OnClick"
+                        Text="SUBMIT"  BackgroundColor="Red" HorizontalOptions="Fill" />
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
+    
+   
